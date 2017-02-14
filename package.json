@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
+    "db:env": "echo DATABASE_URL=postgres://`whoami`@localhost:5432/blushing-peacock-books >> .env",
+    "db:create": "createdb simpleBookstore",
     "db:init": " psql blushing-peacock-books < ./database/schema.sql",
+    "db:drop": "dropdb simpleBookstore -e -i --if-exists",
+    "db:reset": "npm run db:drop && npm run db:create && db:init",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,8 +24,10 @@
   "homepage": "https://github.com/FrankieFabuloso/blushing-peacock-bookstore#readme",
   "dependencies": {
     "body-parser": "^1.16.1",
+    "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "nodemon": "^1.11.0",
+    "pg-promise": "^5.5.6",
     "pug": "^2.0.0-beta11"
   }
 }
