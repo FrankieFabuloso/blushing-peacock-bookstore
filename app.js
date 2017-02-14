@@ -8,8 +8,8 @@ const index = require('./routes/index')
 
 app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/index', index)
-app.use('/', api)
+app.use('/', index)
+app.use('/api', api)
 
 
 app.listen(3000, function () {
