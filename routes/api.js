@@ -11,8 +11,10 @@ app.get('/', function (req, res) {
 
 app.get('/delete/:id', function (req, res) {
   const {id} = req.params
-  console.log('req.params:', req.params)
-  console.log('id:',id )
+  Books.deleteOne(id)
+  .then( results => {
+    res.send(deleted)
+  })
 })
 
 module.exports = app
