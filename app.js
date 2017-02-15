@@ -7,11 +7,17 @@ const api = require('./routes/api')
 const index = require('./routes/index')
 
 app.set('view engine', 'pug')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/index', index)
-app.use('/', api)
+app.use('/', index)
+app.use('/api', api)
 
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
+
+module.exports = app
+
+//exports ES6 needs bable to be able to excute 
