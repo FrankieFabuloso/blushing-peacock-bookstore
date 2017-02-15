@@ -1,4 +1,5 @@
-const app = require('../app')
+const express = require('express')
+const app = express()
 const Books = require('../database/db')
 
 app.get('/', function (req, res) {
@@ -8,17 +9,16 @@ app.get('/', function (req, res) {
   })
 })
 
-app.get('/delete/:id', function (req, res) {
+app.delete('/:id', function (req, res) {
   const {id} = req.params
   Books.deleteOne(id)
     .then( results => {
-      res.send(deleted)
+      res.send({deleted: 1})
   })
 })
 
 app.post('/', function (req, res){
   const body = req.body
-  console.log(body)
   res.json({'received': 1})
 })
 
@@ -29,9 +29,5 @@ app.post( '/add', function (req, res) {
       res.status(200).json({data: results})
     })
 })
-
-app.put()
-
-
 
 module.exports = app

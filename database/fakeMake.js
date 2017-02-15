@@ -28,7 +28,7 @@ const makeFakeBooks = () => {
 
 const makeFakeAuthors = () => {
   let values = ''
-  let SQLAuthorInsertIntoString = 'INSERT INTO "author" ("name") values'
+  let SQLAuthorInsertIntoString = 'INSERT INTO "author" ("author_name") values'
   for(let i=0; i<10; i++){
     let name = '\''+faker.name.findName()+'\''
     values += SQLAuthorInsertIntoString+' ( '+name+' ) ON CONFLICT DO NOTHING;\n'
@@ -50,7 +50,7 @@ const makeFakeGenres = () => {
     'Science'
   ]
   let values = ''
-  let SQLAuthorInsertIntoString = 'INSERT INTO "genre" ("name") values'
+  let SQLAuthorInsertIntoString = 'INSERT INTO "genre" ("book_genre") values'
   for(let i=0; i<10; i++){
     values += SQLAuthorInsertIntoString+' ( \''+genres[i]+'\' ) ON CONFLICT DO NOTHING;\n'
   }
