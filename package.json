@@ -6,10 +6,11 @@
   "scripts": {
     "start": "nodemon app.js",
     "db:env": "echo DATABASE_URL=postgres://`whoami`@localhost:5432/blushing-peacock-books >> .env",
-    "db:create": "createdb simpleBookstore",
+    "db:create": "createdb blushing-peacock-books",
     "db:init": " psql blushing-peacock-books < ./database/schema.sql",
-    "db:drop": "dropdb simpleBookstore -e -i --if-exists",
-    "db:reset": "npm run db:drop && npm run db:create && db:init",
+    "db:drop": "dropdb blushing-peacock-books -e -i --if-exists",
+    "db:seed": "node database/fakeMake.js && psql blushing-peacock-books < ./database/fakeMakeData.sql",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:init && npm run db:seed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +27,7 @@
     "body-parser": "^1.16.1",
     "dotenv": "^4.0.0",
     "express": "^4.14.1",
+    "faker": "^3.1.0",
     "nodemon": "^1.11.0",
     "pg-promise": "^5.5.6",
     "pug": "^2.0.0-beta11"
