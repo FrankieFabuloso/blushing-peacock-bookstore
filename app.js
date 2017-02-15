@@ -17,3 +17,7 @@ app.use('/api', api)
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
+
+module.exports = app
+
+//exports ES6 needs bable to be able to excute 

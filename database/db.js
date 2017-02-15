@@ -10,11 +10,14 @@ const db = pgp(conectionString)
 
 const GET_ALL = "SELECT * FROM book"
 const DELETE_BOOK = "DELETE FROM book WHERE id = $1"
-
+const ADD_BOOK = "INSERT INTO book (title, description) VALUES ('$1', '$2') returning *;"
+const UPDATE_BOOK = "UPDATE book SET title='$1' WHERE id=$2;"
 
 const Books = {
   getAll: () => db.any(GET_ALL),
-  deleteOne: (id) => db.none(DELETE_BOOK, [id])
+  deleteOne: (id) => db.none(DELETE_BOOK, [id]),
+  add: (title, description) => db.one(ADD_BOOK, [title, description])
+  update: (title, id) => db.none(UPDATE_BOOK, [title, id])
 }
 
 module.exports = Books
