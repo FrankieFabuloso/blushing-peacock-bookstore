@@ -19,5 +19,3 @@ app.listen(3000, function () {
 })
 
 module.exports = app
-
-//exports ES6 needs bable to be able to excute 

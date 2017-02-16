@@ -18,7 +18,7 @@ const makeFakeBooks = () => {
   for( let i=0; i<50; i++ ){
     let title = '\''+faker.random.words(2)+'\''
     let description = '\''+faker.random.words(10)+'\''
-    let img_url = '\''+faker.image.cats(250, 250, true)+'/'+i+'\''
+    let img_url = '\''+faker.image.animals(250, 250, true)+'/'+i+'\''
     let author_id = '\''+Math.floor( (Math.random() * 9) + 1)+'\''
     let genre_id = '\''+Math.floor( (Math.random() * 9) + 1)+'\''
     values += SQLBookInsertIntoString+' ( '+title+', '+description+', '+img_url+', '+author_id+', '+genre_id+' ) ON CONFLICT DO NOTHING;\n'
@@ -28,7 +28,7 @@ const makeFakeBooks = () => {
 
 const makeFakeAuthors = () => {
   let values = ''
-  let SQLAuthorInsertIntoString = 'INSERT INTO "author" ("name") values'
+  let SQLAuthorInsertIntoString = 'INSERT INTO "author" ("author_name") values'
   for(let i=0; i<10; i++){
     let name = '\''+faker.name.findName()+'\''
     values += SQLAuthorInsertIntoString+' ( '+name+' ) ON CONFLICT DO NOTHING;\n'
@@ -50,7 +50,7 @@ const makeFakeGenres = () => {
     'Science'
   ]
   let values = ''
-  let SQLAuthorInsertIntoString = 'INSERT INTO "genre" ("name") values'
+  let SQLAuthorInsertIntoString = 'INSERT INTO "genre" ("book_genre") values'
   for(let i=0; i<10; i++){
     values += SQLAuthorInsertIntoString+' ( \''+genres[i]+'\' ) ON CONFLICT DO NOTHING;\n'
   }
