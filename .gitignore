@@ -38,4 +38,4 @@ jspm_packages
 
 # Project specific
 .env
-fakeMakeData.sql
+database/fakeMakeData.sql
