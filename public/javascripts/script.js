@@ -13,15 +13,19 @@ const makeBookTable = books => {
             <span>Genre:</span> <span>${book.book_genre}</span>
           </div>
         </div>
-        <div class='col'>${book.title}</div>
-        <div class='col'>${book.description}</div>
+        <div onblur='update("title", ${book.id} )' class='col'>
+          <span class='book-title'>${book.title}</span>
+        </div>
+        <div onblur='update("description", ${book.id} )' class='col book-description'>
+          ${book.description}
+        </div>
       </div>`).appendTo(".container")
   }
 }
 
 const deleteBook = id =>{
-
   $(`.row-${id}`).empty()
+  $(`.row-${id}`).remove()
   $.ajax({
     url: `http://localhost:3000/api/${id}`,
     method: 'DELETE'

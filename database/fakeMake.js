@@ -18,7 +18,7 @@ const makeFakeBooks = () => {
   for( let i=0; i<50; i++ ){
     let title = '\''+faker.random.words(2)+'\''
     let description = '\''+faker.random.words(10)+'\''
-    let img_url = '\''+faker.image.cats(250, 250, true)+'/'+i+'\''
+    let img_url = '\''+faker.image.animals(250, 250, true)+'/'+i+'\''
     let author_id = '\''+Math.floor( (Math.random() * 9) + 1)+'\''
     let genre_id = '\''+Math.floor( (Math.random() * 9) + 1)+'\''
     values += SQLBookInsertIntoString+' ( '+title+', '+description+', '+img_url+', '+author_id+', '+genre_id+' ) ON CONFLICT DO NOTHING;\n'

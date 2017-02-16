@@ -6,4 +6,13 @@ $(document).ready( function(){
       makeBookTable(result)
     }
   })
+
+  $('div').on('click', '.book-title', function(event){
+    let currentData = $(event.target).text()
+    let modifiedDOMElem = $(event.target)
+    console.log('currentData:', currentData.trim())
+    modifiedDOMElem = modifiedDOMElem.replaceWith(`<textarea class='book-title'>${currentData}</textarea>`)
+    console.log('modifiedDOMElem', modifiedDOMElem)
+    $('.book-title').focus()
+  })
 })
