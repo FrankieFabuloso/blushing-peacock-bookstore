@@ -27,7 +27,6 @@ app.delete('/:id', function (req, res) {
 })
 
 app.put('/', function(req, res) {
-  console.log('req.body:', req.body)
   const {id, column, data} = req.body
   console.log(id, column, data)
   Books.update(id, column, data)
@@ -35,9 +34,11 @@ app.put('/', function(req, res) {
 })
 
 app.post( '/', function (req, res) {
-  const {title, description} = req.body
-  Books.add(title, description)
+  const {title, description, img_url, author, genere} = req.body
+  console.log('req.body:', req.body)
+  Books.add(title, description, img_url, author, genre)
     .then( results => {
+      console.log('results:', results)
       res.status(200).json({data: results})
     })
 })

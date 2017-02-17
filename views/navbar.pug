@@ -8,6 +8,10 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
         a.nav-link(href='/')
           | Home
           span.sr-only (current)
+      li.nav-item.active
+        a.nav-link(onclick='showForm()')
+          button
+            |Add Book
     form.form-inline.my-2.my-lg-0(method='get', action='/api/search')
       input.form-control.mr-sm-2(type='text', placeholder='Search', name='search')
       button.btn.btn-outline-success.my-2.my-sm-0( value='search', type='submit') Search
