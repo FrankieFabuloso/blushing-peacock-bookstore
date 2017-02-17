@@ -9,6 +9,15 @@ app.get('/', function (req, res) {
   })
 })
 
+app.get('/book/:id', function (req, res) {
+  const {id} = req.params
+  console.log('id:', id)
+  Books.getById(id)
+  .then(results => {
+    res.status(200).json(results)
+  })
+})
+
 app.delete('/:id', function (req, res) {
   const {id} = req.params
   Books.deleteOne(id)
@@ -17,12 +26,12 @@ app.delete('/:id', function (req, res) {
   })
 })
 
-app.put('/:id', function(req, res) {
-  const {id} = req.params
-  const {column} = req.body
-  console.log('whats happening ahahhhhhhhhh:', req.body)
-  // const {id} = req.params
-  // const updateVal = req.body.title? req.body.title : req.body.description
+app.put('/', function(req, res) {
+  console.log('req.body:', req.body)
+  const {id, column, data} = req.body
+  console.log(id, column, data)
+  Books.update(id, column, data)
+  .then()
 })
 
 app.post( '/', function (req, res) {
