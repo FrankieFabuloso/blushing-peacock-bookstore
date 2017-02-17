@@ -90,3 +90,37 @@ const deleteBook = id =>{
     method: 'DELETE'
   })
 }
+
+const showForm = () => {
+  $(`
+  <form method='post', action='/api'>
+    <div class="form-group">
+      <label for="book-title-form">Book Title</label>
+      <input type="text" class="form-control" id="book-title-form" placeholder="A super cool book." name="title">
+    </div>
+    <div class="form-group">
+      <label for="book-description-form">Book Description</label>
+      <textarea class="form-control" id="book-description-form" rows="3" name="description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="book-img-url-form">Image URL</label>
+      <input type="text" class="form-control" id="book-img-url-form" placeholder="Image URL" name="img_url">
+    </div>
+    <div class="form-group">
+      <label for="book-author-form">Book Author</label>
+      <input type="text" class="form-control" id="book-author-form" placeholder="Mr. Author Dude" name="author">
+    </div>
+    <div class="form-group">
+      <label for="book-genre-form">Book Genre</label>
+      <input type="text" class="form-control" id="book-genre-form" placeholder="A genre." name="genre">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="close" class="btn btn-danger">Close</button>
+</form>`).prependTo('.container')
+
+  $('.btn-danger').on('click', function() {
+    event.preventDefault()
+    $('form').empty()
+    $('form').remove()
+  })
+}
