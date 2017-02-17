@@ -33,5 +33,17 @@ app.post( '/', function (req, res) {
     })
 })
 
+app.get( '/search', function (req, res) {
+  const term = req.query.search
+  console.log(term)
+  Books.search(term)
+  .then(results => {
+    res.status(200).json({data: results})
+  })
+})
+
+// post route send the search term and redirects to the search page
+// get route that renders the search and displays the search querey
+
 
 module.exports = app
