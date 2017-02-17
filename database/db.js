@@ -12,6 +12,7 @@ const GET_ALL = "SELECT book.*, author.author_name, genre.book_genre FROM book J
 const GET_ONE = "SELECT book.*, author.author_name, genre.book_genre FROM book JOIN author ON author_id=author.id JOIN genre ON genre_id=genre.id WHERE book.id = $1"
 const DELETE_BOOK = "DELETE FROM book WHERE id = $1"
 const ADD_BOOK = "INSERT INTO book (title, description) VALUES ('$1', '$2') returning *;"
+const SEARCH_BY_TITLE = "SELECT * FROM book WHERE title LIKE '%$1%'"
 const UPDATE_BOOK_TITLE = `UPDATE book SET title=$3 WHERE id=$1;`
 const UPDATE_BOOK_DESCRIPTION = `UPDATE book SET description=$3 WHERE id=$1;`
 
@@ -20,6 +21,7 @@ const Books = {
   getById: (id) => db.one(GET_ONE, [id]),
   deleteOne: (id) => db.none(DELETE_BOOK, [id]),
   add: (title, description) => db.one(ADD_BOOK, [title, description]),
+  search: (term) => db.any(SEARCH_BY_TITLE, [term])
   update: (id, column, data) => {
     if( column === 'title') {
       return db.none(UPDATE_BOOK_TITLE, [id, column, data])
