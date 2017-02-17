@@ -14,6 +14,7 @@ const DELETE_BOOK = "DELETE FROM book WHERE id = $1"
 const ADD_AUTHOR = "INSERT INTO author (author_name) VALUES ($1) RETURNING id"
 const ADD_GENRE = "INSERT INTO genre (book_genre) VALUES ($1) RETURNING id"
 const ADD_BOOK = "INSERT INTO book (title, description, img_url, author_id, genre_id) VALUES ($1, $2, $3, $4, $5) returning *"
+const SEARCH_BY_TITLE = "SELECT * FROM book WHERE title LIKE '%$1%'"
 const UPDATE_BOOK_TITLE = `UPDATE book SET title=$3 WHERE id=$1;`
 const UPDATE_BOOK_DESCRIPTION = `UPDATE book SET description=$3 WHERE id=$1`
 
@@ -30,6 +31,7 @@ const Books = {
       const genreID = ids[1].id
       return db.one(ADD_BOOK, [title, description, img_url, authorID, genreID])
     }),
+  search: (term) => db.any(SEARCH_BY_TITLE, [term]),
   update: (id, column, data) => {
     if( column === 'title') {
       return db.none(UPDATE_BOOK_TITLE, [id, column, data])

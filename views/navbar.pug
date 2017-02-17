@@ -12,6 +12,6 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
         a.nav-link(onclick='showForm()')
           button
             |Add Book
-    form.form-inline.my-2.my-lg-0
-      input.form-control.mr-sm-2(type='text', placeholder='Search')
-      button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+    form.form-inline.my-2.my-lg-0(method='get', action='/api/search')
+      input.form-control.mr-sm-2(type='text', placeholder='Search', name='search')
+      button.btn.btn-outline-success.my-2.my-sm-0( value='search', type='submit') Search
