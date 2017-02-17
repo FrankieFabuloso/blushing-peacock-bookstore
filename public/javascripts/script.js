@@ -93,7 +93,7 @@ const deleteBook = id =>{
 
 const showForm = () => {
   $(`
-  <form method='post', action='/api'>
+  <form class='add-book' method='post', action='/api'>
     <div class="form-group">
       <label for="book-title-form">Book Title</label>
       <input type="text" class="form-control" id="book-title-form" placeholder="A super cool book." name="title">
@@ -120,7 +120,7 @@ const showForm = () => {
 
   $('.btn-danger').on('click', function() {
     event.preventDefault()
-    $('form').empty()
-    $('form').remove()
+    $('form.add-book').empty()
+    $('form.add-book').remove()
   })
 }

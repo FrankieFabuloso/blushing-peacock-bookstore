@@ -34,7 +34,7 @@ app.put('/', function(req, res) {
 })
 
 app.post( '/', function (req, res) {
-  const {title, description, img_url, author, genere} = req.body
+  const {title, description, img_url, author, genre} = req.body
   console.log('req.body:', req.body)
   Books.add(title, description, img_url, author, genre)
     .then( results => {
