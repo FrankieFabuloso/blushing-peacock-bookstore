@@ -1,17 +1,6 @@
 const faker = require('faker')
 const fs = require('fs')
 
-
-// const fakeMake = (table, length, attributes ) => {
-//   attributes = attributes.reduce((memo, attribute) => memo=memo+'"'+attribute+'", ', '')
-//   const SQLInsertString = `INSERT INTO "${table}" (${attributes})`
-//   console.log('SQLInsertString:', SQLInsertString)
-// }
-//
-//
-//
-
-
 const makeFakeBooks = () => {
   let SQLBookInsertIntoString = 'INSERT INTO "book" ("title", "description", "img_url", "author_id", "genre_id") values'
   let values = ''
@@ -60,7 +49,6 @@ const makeFakeGenres = () => {
 const writeFakeDataToFile = () => {
   let values = ''
   values+= makeFakeAuthors() + makeFakeGenres() + makeFakeBooks()
-  console.log('values:', values)
   fs.writeFileSync('./database/fakeMakeData.sql', values)
 }
 

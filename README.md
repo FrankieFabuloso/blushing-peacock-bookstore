@@ -1,6 +1,21 @@
 # blushing-peacock-bookstore
 Guild Crafts project #69
 
+## Set Up
+- create .env file
+  ```
+  npm run db:env
+  ```
+- create and seed db. (note: might have to run a few times due to SQL not liking apostrophes in values)
+  ```
+  npm db:reset
+  ```
+- start server
+  ```
+  npm start
+  ```
+
+
 ## Description
 
 Create a simple content management system that allows users to add, delete, or update books.  Books entered in the system can be viewed in a listing, or searched for using basic searches (title, author, genre).

@@ -57,7 +57,6 @@ const makeBookPage = book => {
 
 
 const toggleTextarea = (id, column) => {
-  console.log('column:', column)
   const currentDOMElement = $(event.target)
   const currentDOMElementText = $(currentDOMElement).text()
   currentDOMElement.replaceWith(`
@@ -67,7 +66,6 @@ const toggleTextarea = (id, column) => {
 }
 
 const updateData = (id, column) => {
-  console.log('column:', column)
   const currentDOMElement = $(event.target)
   const currentDOMElementText = $(currentDOMElement).val()
   currentDOMElement.replaceWith(`
